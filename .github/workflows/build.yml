@@ -40,8 +40,10 @@ jobs:
           yay -S jdk-openjdk-wakefield --noconfirm --needed
           yay -S ffdec --noconfirm --needed
           mkdir -p artifacts
-          cp /var/cache/pacman/pkg/ffdec-*.pkg.tar.zst artifacts/
-          cp /var/cache/pacman/pkg/jdk-openjdk-wakefield-*.pkg.tar.zst artifacts/
+          
+          cp ~/.cache/yay/ffdec/ffdec-*.pkg.tar.zst artifacts/
+          cp ~/.cache/yay/jdk-openjdk-wakefield/jdk-openjdk-wakefield-*.pkg.tar.zst artifacts/
+          
           EOF
 
       - name: Upload built binaries
