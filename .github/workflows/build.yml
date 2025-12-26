@@ -46,4 +46,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: arch-packages
-          path: /var/cache/pacman/pkg/*.pkg.tar.zst
+          path: |
+            /var/cache/pacman/pkg/ffdec-*.pkg.tar.zst
+            /var/cache/pacman/pkg/jdk-openjdk-wakefield-*.pkg.tar.zst
