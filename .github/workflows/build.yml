@@ -41,8 +41,8 @@ jobs:
           yay -S ffdec --noconfirm --needed
           mkdir -p artifacts
           
-          cp ~/.cache/yay/ffdec/ffdec-*.pkg.tar.zst artifacts/
-          cp ~/.cache/yay/jdk-openjdk-wakefield/jdk-openjdk-wakefield-*.pkg.tar.zst artifacts/
+          cp ~/.cache/yay/ffdec/*.pkg.tar.zst artifacts/
+          cp ~/.cache/yay/java-openjdk-wakefield/*.pkg.tar.zst artifacts/
           
           EOF
 
