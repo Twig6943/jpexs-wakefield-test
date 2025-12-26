@@ -32,9 +32,12 @@ jobs:
         run: |
           sudo -u builder bash <<'EOF'
           set -e
-          cd pkg/wakefield
+          git clone https://aur.archlinux.org/yay-bin.git
+          cd yay-bin
           makepkg -si --noconfirm
-          cd ../jpexs
+          yay -S jdk-openjdk-wakefield --noconfirm
+          cd ..
+          cd pkg/jpexs
           makepkg -si --noconfirm
           EOF
 
@@ -43,5 +46,4 @@ jobs:
         with:
           name: arch-package
           path: |
-            pkg/wakefield/*.pkg.tar.zst
             pkg/jpexs/*.pkg.tar.zst
