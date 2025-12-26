@@ -37,9 +37,11 @@ jobs:
           cd yay-bin
           makepkg -si --noconfirm
           cd ..
-
           yay -S jdk-openjdk-wakefield --noconfirm --needed
           yay -S ffdec --noconfirm --needed
+          mkdir -p artifacts
+          cp /var/cache/pacman/pkg/ffdec-*.pkg.tar.zst artifacts/
+          cp /var/cache/pacman/pkg/jdk-openjdk-wakefield-*.pkg.tar.zst artifacts/
           EOF
 
       - name: Upload built binaries
@@ -47,5 +49,4 @@ jobs:
         with:
           name: arch-packages
           path: |
-            /var/cache/pacman/pkg/ffdec-*.pkg.tar.zst
-            /var/cache/pacman/pkg/jdk-openjdk-wakefield-*.pkg.tar.zst
+            artifacts/*.pkg.tar.zst
