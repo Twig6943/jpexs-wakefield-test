@@ -28,22 +28,22 @@ jobs:
       - name: Fix permissions
         run: chown -R builder:builder .
 
-      - name: Build package (makepkg -si)
+      - name: Build packages
         run: |
           sudo -u builder bash <<'EOF'
           set -e
+
           git clone https://aur.archlinux.org/yay-bin.git
           cd yay-bin
           makepkg -si --noconfirm
-          yay -S jdk-openjdk-wakefield --noconfirm
           cd ..
-          cd pkg/jpexs
-          makepkg -si --noconfirm
+
+          yay -S jdk-openjdk-wakefield --noconfirm --needed
+          yay -S ffdec --noconfirm --needed
           EOF
 
-      - name: Upload package artifact
+      - name: Upload built binaries
         uses: actions/upload-artifact@v4
         with:
-          name: arch-package
-          path: |
-            pkg/jpexs/*.pkg.tar.zst
+          name: arch-packages
+          path: /var/cache/pacman/pkg/*.pkg.tar.zst
